@@ -1,0 +1,54 @@
+movies:
+    path:     /
+    defaults: { _controller: "WABoBundle:Movies:index" }
+
+movies_show:
+    path:     /{id}/show
+    defaults: { _controller: "WABoBundle:Movies:show" }
+
+movies_new:
+    path:     /new
+    defaults: { _controller: "WABoBundle:Movies:new" }
+
+movies_create:
+    path:     /create
+    defaults: { _controller: "WABoBundle:Movies:create" }
+    requirements: { _method: post }
+
+movies_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "WABoBundle:Movies:edit" }
+
+movies_update:
+    path:     /{id}/update
+    defaults: { _controller: "WABoBundle:Movies:update" }
+    requirements: { _method: post|put }
+
+movies_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "WABoBundle:Movies:delete" }
+    requirements: { _method: post|delete }
+
+movies_addCart:
+    path:     /{id}/Cart
+    defaults: { _controller: "WABoBundle:Movies:addCart" }
+
+movies_showCart:
+    path:     /Cart
+    defaults: { _controller: "WABoBundle:Movies:showCart" }
+
+movies_minus:
+    path:     /{id}/minus/Cart
+    defaults: { _controller: "WABoBundle:Movies:minus" }
+
+movies_plus:
+    path:     /{id}/plus/Cart
+    defaults: { _controller: "WABoBundle:Movies:plus" }
+
+movies_delCart:
+    path:     /{id}/del/Cart
+    defaults: { _controller: "WABoBundle:Movies:delCart" }
+
+movies_like:
+    path:     /like/{movie_id}/{user_id}
+    defaults: { _controller: "WABoBundle:Movies:like" }

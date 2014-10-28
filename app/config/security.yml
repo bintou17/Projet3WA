@@ -1,0 +1,42 @@
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    firewalls:
+        #register:
+           # pattern: ^/backoffice/register
+            #form_login:
+             #   provider: fos_userbundle
+#                csrf_provider: form.csrf_provider
+#                always_use_default_target_path: true
+#                default_target_path:  /backoffice/login
+#                check_path: /backoffice/register_check
+
+        main:
+            pattern: ^/backoffice
+            form_login:
+                provider: fos_userbundle
+                csrf_provider: form.csrf_provider
+                always_use_default_target_path: true
+                default_target_path:  /backoffice/homepage
+                check_path: /backoffice/login_check # soumet le formulaire de login vers cette url
+                login_path: /login # utilisateur est dirigé ici quand il a besoin de se connecter
+                post_only: true # par défaut le formulaire de login doit etre un post et pas un get
+            logout:
+                path:   /backoffice/logout
+                target: /login
+            anonymous:    true
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/backoffice, role: ROLE_USER }

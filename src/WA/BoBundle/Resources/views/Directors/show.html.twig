@@ -1,0 +1,87 @@
+{% extends 'WABoBundle::layout.html.twig' %}
+{% use 'WABoBundle:Layout:third.html.twig' %}
+
+{% block content %}
+
+<!-- fil d'ariane -->
+    <ul class="breadcrumb breadcrumb-page">
+        <div class="breadcrumb-label text-light-gray"> Où êtes-vous? </div>
+        <li><a href="#">Home</a></li>
+        <li class="active"><a href="#">Réalisateurs</a></li>
+        <li class="active"><a href="#">Voir</a></li>
+
+    </ul>
+
+   <div class="page-header">
+        <div class="row">
+            <!-- Page header, center on small screens -->
+            <h1 class="col-xs-12 col-sm-6 text-center text-left-sm">
+                <i class="fa fa-video-camera"></i>
+                &nbsp;&nbsp;Fiche du realisateur {{entity.firstname}}{{ entity.lastname}}
+    
+            </h1>
+            <div class="col-xs-12 col-sm-6">
+                <div class="row">
+                    <hr class="visible-xs no-grid-gutter-h">
+                    <!-- Margin -->
+                    <div class="visible-xs clearfix form-group-margin"></div>
+
+
+                    <!-- Search field -->
+                    <form action="" class="pull-right col-xs-12 col-sm-8">
+                        <div class="input-group no-margin" >
+                            <span class="input-group-addon" style="border:none;background: #fff;background: rgba(0,0,0,.05);"><i class="fa fa-search"></i></span>
+                            <input type="text" placeholder="Recherche un fim, une catégorie, un tag" class="form-control no-padding-hr" style="border:none;background: #fff;background: rgba(0,0,0,.05);">
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div> <!-- / .page-header -->
+
+
+
+<!--1:BEGIN ROW -->
+ <div class="row">
+    
+    <div class="col-md-12">
+        <div class="note note-info">
+            <p lass="pull-left">{{entity.firstname}}{{ entity.lastname}} -age</p>
+        </div>
+            <p class="well"><strong>Biographie: </strong>{{ entity.biography|striptags|raw}}</p>
+    </div>
+
+    <h3>Films réalisés</h3>
+    
+    <hr>
+    
+    <div id="listmovies">
+        <div class="row">
+                <div class="alert alert-warning">
+                    <i class="glyphicon glyphicon-exclamation-sign"></i> Il n'y a pas de film
+                </div>
+        </div>
+    </div>
+   
+    <a class="btn btn-primary" href="{{ path('directors_edit', { 'id': entity.id }) }}">
+        Edit
+    </a>
+
+    <!--TODO-->
+    <form name="form" method="post" action="#" style="display:inline-block">
+        <input type="hidden" name="_method" value="DELETE">    
+        <div id="form" style="display:inline-block">
+            <div>
+                <button type="submit" id="" name="form[submit]" class="btn btn-danger">Supprimer</button>
+            </div>
+            <input type="hidden" id="form__token" name="form[_token]" value="" class="form-control">
+          </div> 
+    </form>
+
+
+
+
+</div><!-- END ROW ========================= -->
+{% endblock %}

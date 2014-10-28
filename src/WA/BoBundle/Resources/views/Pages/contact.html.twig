@@ -1,0 +1,61 @@
+{% extends 'WABoBundle::layout.html.twig' %}
+{% use 'WABoBundle:layout:third.html.twig' %}
+{% form_theme form 'WABoBundle:Form:formtheme.html.twig' %}
+
+
+{% block content %}
+
+    {{ form_start(form, {'attr': {'class': 'panel form-horizontal' }}) }}
+    <div class="panel-heading">
+        <span class="panel-title">Contact us</span>
+    </div>
+    {{ form_errors(form) }}
+
+    <div class="panel-body">
+        <div class="row form-group has-error">
+            {{ form_label(form.email, 'Email :', {'label_attr': {'class' : 'col-md-3 control-label' }}) }}
+
+            <div class="col-md-9">
+                {{ form_widget(form.email) }}
+                {{ form_errors(form.email) }}
+            </div>
+        </div>
+        <div class="row form-group has-error">
+            {{ form_label(form.name, 'name :', {'label_attr': {'class' : 'col-md-3 control-label' }}) }}
+            <div class="col-md-9">
+                {{ form_widget(form.name) }}
+                {{ form_errors(form.name) }}
+            </div>
+        </div>
+        <div class=" form-group has-error">
+            {{ form_label(form.message, 'message :', {'label_attr': {'class' : 'col-md-3 control-label' }}) }}
+            <div class="col-md-9">
+                {{ form_widget(form.message) }}
+                {{ form_errors(form.message) }}
+            </div>
+        </div>
+        <div class="row form-group has-error">
+            {{ form_label(form.movie, 'movie :', {'label_attr': {'class' : 'col-md-3 control-label' }}) }}
+            <div class="col-md-9">
+                {{ form_widget(form.movie) }}
+                {{ form_errors(form.movie) }}
+            </div>
+        </div>
+        <div class="row form-group has-error">
+            {{ form_label(form.cinema, 'cinema :', {'label_attr': {'class' : 'col-md-3 control-label' }}) }}
+            <div class="col-md-9">
+                {{ form_widget(form.cinema) }}
+                {{ form_errors(form.cinema) }}
+            </div>
+        </div>
+        <div class="panel-footer text-right">
+            <input class="btn btn-primary" type="submit" value="submit"/>
+        </div>
+    </div>
+    {{ form_widget(form._token) }}
+    {{ form_end(form, {'render_rest': false}) }}
+
+    <!-- endblock content -->
+
+
+{% endblock %}

@@ -1,0 +1,64 @@
+wa_bo_user:
+    resource: "@WABoBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+
+wa_bo_tags:
+    resource: "@WABoBundle/Resources/config/routing/tags.yml"
+    prefix:   /tags
+
+wa_bo_sessions:
+    resource: "@WABoBundle/Resources/config/routing/sessions.yml"
+    prefix:   /sessions
+
+wa_bo_movies:
+    resource: "@WABoBundle/Resources/config/routing/movies.yml"
+    prefix:   /movies
+
+wa_bo_medias:
+    resource: "@WABoBundle/Resources/config/routing/medias.yml"
+    prefix:   /medias
+
+wa_bo_directors:
+    resource: "@WABoBundle/Resources/config/routing/directors.yml"
+    prefix:   /directors
+
+wa_bo_comments:
+    resource: "@WABoBundle/Resources/config/routing/comments.yml"
+    prefix:   /comments
+
+wa_bo_cinema:
+    resource: "@WABoBundle/Resources/config/routing/cinema.yml"
+    prefix:   /cinema
+
+wa_bo_categories:
+    resource: "@WABoBundle/Resources/config/routing/categories.yml"
+    prefix:   /categories
+
+wa_bo_actors:
+    resource: "@WABoBundle/Resources/config/routing/actors.yml"
+    prefix:   /actors
+
+wa_bo_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: WABoBundle:Default:index }
+
+wa_bo_index:
+    path:     /homepage
+    defaults: { _controller: WABoBundle:Pages:homePage }
+
+wa_login_check:
+    path:     /login_check
+    defaults: { _controller: WABoBundle:Security:login }
+
+wa_register_check:
+    path:     /register
+    defaults: { _controller: WABoBundle:Registration:register }
+
+wa_logout:
+    path:     /logout
+
+wa_bo_home:
+    path:     /home
+    defaults: { _controller: WABoBundle:Pages:home }
+
+

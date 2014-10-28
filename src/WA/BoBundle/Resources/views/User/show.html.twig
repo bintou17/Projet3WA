@@ -1,0 +1,184 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>User</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ entity.email }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ entity.username }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ entity.password }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ entity.ville }}</td>
+            </tr>
+            <tr>
+                <th>Zipcode</th>
+                <td>{{ entity.zipcode }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ entity.tel }}</td>
+            </tr>
+            <tr>
+                <th>Ip</th>
+                <td>{{ entity.ip }}</td>
+            </tr>
+            <tr>
+                <th>Enabled</th>
+                <td>{{ entity.enabled }}</td>
+            </tr>
+            <tr>
+                <th>Lastlogin</th>
+                <td>{{ entity.lastLogin|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Expired</th>
+                <td>{{ entity.expired }}</td>
+            </tr>
+            <tr>
+                <th>Locked</th>
+                <td>{{ entity.locked }}</td>
+            </tr>
+            <tr>
+                <th>Usernamecanonical</th>
+                <td>{{ entity.usernameCanonical }}</td>
+            </tr>
+            <tr>
+                <th>Emailcanonical</th>
+                <td>{{ entity.emailCanonical }}</td>
+            </tr>
+            <tr>
+                <th>Salt</th>
+                <td>{{ entity.salt }}</td>
+            </tr>
+            <tr>
+                <th>Expiresat</th>
+                <td>{{ entity.expiresAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Confirmationtoken</th>
+                <td>{{ entity.confirmationToken }}</td>
+            </tr>
+            <tr>
+                <th>Passwordrequestedat</th>
+                <td>{{ entity.passwordRequestedAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Googleid</th>
+                <td>{{ entity.googleid }}</td>
+            </tr>
+            <tr>
+                <th>Googleaccesstoken</th>
+                <td>{{ entity.googleaccesstoken }}</td>
+            </tr>
+            <tr>
+                <th>Flickrid</th>
+                <td>{{ entity.flickrid }}</td>
+            </tr>
+            <tr>
+                <th>Flickraccesstoken</th>
+                <td>{{ entity.flickraccesstoken }}</td>
+            </tr>
+            <tr>
+                <th>Githubid</th>
+                <td>{{ entity.githubid }}</td>
+            </tr>
+            <tr>
+                <th>Githubaccesstoken</th>
+                <td>{{ entity.githubaccesstoken }}</td>
+            </tr>
+            <tr>
+                <th>Linkedinaccesstoken</th>
+                <td>{{ entity.linkedinaccesstoken }}</td>
+            </tr>
+            <tr>
+                <th>Linkedinid</th>
+                <td>{{ entity.linkedinid }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ entity.roles }}</td>
+            </tr>
+            <tr>
+                <th>Extras</th>
+                <td>{{ entity.extras }}</td>
+            </tr>
+            <tr>
+                <th>Longitude</th>
+                <td>{{ entity.longitude }}</td>
+            </tr>
+            <tr>
+                <th>Latitude</th>
+                <td>{{ entity.latitude }}</td>
+            </tr>
+            <tr>
+                <th>Facebookid</th>
+                <td>{{ entity.facebookid }}</td>
+            </tr>
+            <tr>
+                <th>Facebookaccesstoken</th>
+                <td>{{ entity.facebookaccesstoken }}</td>
+            </tr>
+            <tr>
+                <th>Twitterid</th>
+                <td>{{ entity.twitterid }}</td>
+            </tr>
+            <tr>
+                <th>Twitteraccesstoken</th>
+                <td>{{ entity.twitteraccesstoken }}</td>
+            </tr>
+            <tr>
+                <th>Credentialsexpired</th>
+                <td>{{ entity.credentialsExpired }}</td>
+            </tr>
+            <tr>
+                <th>Credentialsexpireat</th>
+                <td>{{ entity.credentialsExpireAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{{ entity.createdAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{{ entity.updatedAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Deletedat</th>
+                <td>{{ entity.deletedAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Lastactivity</th>
+                <td>{{ entity.lastactivity|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('user') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('user_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

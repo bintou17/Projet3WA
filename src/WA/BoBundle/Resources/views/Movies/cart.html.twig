@@ -1,0 +1,139 @@
+{% extends 'WABoBundle::layout.html.twig' %}
+{% use 'WABoBundle:Layout:third.html.twig' %}
+{% block content %}
+
+<div class="page-header">
+            <h1><i class="fa fa-file-text-o page-header-icon"></i>&nbsp;&nbsp;Invoice Page</h1>
+            <a href="pages-invoice-print.html" class="pull-right btn btn-primary" style="display: block;" target="_blank"><i class="fa fa-print"></i>&nbsp;&nbsp;Print version</a>
+</div> <!-- / .page-header -->
+
+
+
+
+
+
+<!--1:BEGIN ROW -->
+ <div class="row">
+    <div class="panel invoice">
+        <div class="invoice-header">
+            <h3>
+                <div class="invoice-logo demo-logo">
+                    <img src="" alt="" style="">
+                </div>
+                <div>
+                    <small>
+                        <strong>Pixel</strong>Admin
+                    </small>
+                <br>
+                 INVOICE #244
+                </div>
+                </h3>
+                <address>
+                    PixelAdmin Ltd.<br>
+                    Los Angeles, Hoover Street, 32<br>
+                    90080 CA, USA
+                </address>
+                <div class="invoice-date">
+                    <small><strong>Date</strong></small><br>
+                    {{ "now"|date("d/m/Y") }}
+                </div>
+        </div> <!-- / .invoice-header -->
+        <div class="invoice-info">
+            <div class="invoice-recipient">
+                <strong>{{app.user.username}}</strong><br>
+                New York, Pass Avenue, 109<br>
+                10012 NY, USA
+            </div> <!-- / .invoice-recipient -->
+                <div class="invoice-total">TOTAL:
+                <span>
+                    {% set sum = 0 %}
+
+                    {% for total in app.session.get('panier') %}
+
+                    {% set sum = sum + total.price*total.quantity %}
+
+                    {% endfor %}
+                    {{ sum }} € 
+                </span>
+            </div> <!-- / .invoice-total -->
+        </div> <!-- / .invoice-info -->
+            <hr>
+         <div class="invoice-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                Films
+                            </th>
+                            <th>
+                                Prix
+                            </th>
+                            <th>
+                                 Quantité
+                            </th>
+                            <th>
+                                Prix Ligne
+                            </th>
+                            <th>
+                                Actions
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for movie in app.session.get('panier') %}
+                        <tr>
+                        <td>{{movie.title}}</td>
+                        <td>{{ movie.price }}</td>
+                            <td>
+                                <a href="{{ path('movies_minus', { 'id': movie.id }) }}" class="btn btn-xs btn-primary removeqtycard">
+                                    <i class="fa fa-minus"></i>
+                                </a>
+                                <b>{{ movie.quantity }}</b>
+                                <a href="{{ path('movies_plus', { 'id': movie.id }) }}" class="btn btn-xs btn-primary addqtycard">
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                            </td>
+                        <td>{{ movie.quantity * movie.price }}</td>
+                            <td>
+                                <a class="removecard" href="{{ path('movies_delCart',{'id': movie.id})}}">
+                                    <span class="fa fa-trash-o"></span>
+                                </a>
+
+                            </td>
+                        </tr>
+                         {%  endfor %}
+
+
+
+                    </tbody>
+                </table>
+            </div> <!-- / .invoice-table -->
+        </div>
+
+     {% import 'LexikPayboxBundle:Macro:paybox.html.twig' as paybox %}
+
+     <form action="{{ url }}" method="post">
+         {{ paybox.form(form) }}
+         <input type="submit" />
+     </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div><!-- 1-END ROW ========================= -->
+
+
+
+
+{% endblock %}

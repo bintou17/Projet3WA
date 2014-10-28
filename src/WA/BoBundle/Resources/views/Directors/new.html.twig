@@ -1,0 +1,22 @@
+{% extends 'WABoBundle::layout.html.twig' %}
+{% use 'WABoBundle:Layout:third.html.twig' %}
+
+{% block content %}
+
+    <!--1:begin of row   -->
+    <div class="row">
+        <div class="col-md-12">
+    <h1>Directors creation</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('directors') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+</div>
+</div>
+{% endblock %}

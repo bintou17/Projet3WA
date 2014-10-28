@@ -1,0 +1,11 @@
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+wa_bo:
+    resource: "@WABoBundle/Resources/config/routing.yml"
+    prefix:   /backoffice
+
+lexik_paybox:
+    resource: '@LexikPayboxBundle/Resources/config/routing.yml'
+
+

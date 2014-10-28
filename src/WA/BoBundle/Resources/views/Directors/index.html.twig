@@ -1,0 +1,128 @@
+{% extends 'WABoBundle::layout.html.twig' %}
+{% use 'WABoBundle:Layout:third.html.twig' %}
+{% block content %}
+
+<!-- fil d'ariane -->
+    <ul class="breadcrumb breadcrumb-page">
+        <div class="breadcrumb-label text-light-gray"> Où êtes-vous? </div>
+        <li><a href="#">Home</a></li>
+        <li class="active"><a href="#">Réalisateurs</a></li>
+    </ul>
+
+   <div class="page-header">
+        <div class="row">
+            <!-- Page header, center on small screens -->
+            <h1 class="col-xs-12 col-sm-6 text-center text-left-sm">
+                <i class="fa fa-video-camera"></i>
+                &nbsp;&nbsp;Les réalisateurs
+                <span class="label label-danger">{{ countDirectors }}</span>
+            </h1>
+            <div class="col-xs-12 col-sm-6">
+                <div class="row">
+                    <hr class="visible-xs no-grid-gutter-h">
+                    <!-- Margin -->
+                    <div class="visible-xs clearfix form-group-margin"></div>
+
+
+                    <!-- Search field -->
+                    <form action="" class="pull-right col-xs-12 col-sm-8">
+                        <div class="input-group no-margin" >
+                            <span class="input-group-addon" style="border:none;background: #fff;background: rgba(0,0,0,.05);"><i class="fa fa-search"></i></span>
+                            <input type="text" placeholder="Recherche un fim, une catégorie, un tag" class="form-control no-padding-hr" style="border:none;background: #fff;background: rgba(0,0,0,.05);">
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div> <!-- / .page-header -->
+
+
+
+<!--1:BEGIN ROW -->
+ <div class="row">
+    <div class="col-md-12"></div>
+
+    <div class ="row well">
+       <div class="pull-right col-xs-12 col-sm-auto"><a href="#" class="btn btn-primary btn-labeled" style="width: 100%;"><span class="btn-label icon fa fa-plus"></span>Créer un réalisateur</a></div>
+    </div>
+
+
+    <div class="table-light">
+
+
+
+        <table class="records_list  table table-striped">
+
+             <thead>
+             <tr>
+                 <th>Profil</th>
+                 <th><i class="fa fa-arrow-circle-down"></i>
+                     <a translationcount="" class="asc" href="#" title="Nom">Nom</a>
+                 </th>
+                 <th>Biographie</th>
+                 <th><i class="fa fa-arrow-circle-down"></i>
+                     <a translationcount="" class="sortable" href="#" title="Note">Note</a>
+                 </th>
+                 <th>Actions</th>
+             </tr>
+            </thead>
+
+            <tbody>
+
+            {% for director in directors %}
+            <tr>
+                <td>
+                    <img class="img-thumbnail"
+                         src="{{ asset('uploads/directors/'~director.image) }}" alt="{{ director.id }}">
+               </td>
+
+                <td>
+                  <a href="{{ path('directors_show', { 'id': director.id }) }}">
+                      {{ director.firstname }} {{ director.lastname}}
+                     <br><i class="text-warning">age</i>
+                  </a>
+                </td>
+
+                <td class="smalltext">
+                  {{ director.biography|striptags|slice(0,100)|raw  }}
+
+                </td>
+
+                <td>
+                   <span data-rating="{{director.note }}" class="rating">
+                       <ul class="widget-rating">
+                           <li class="active"><a href="#" title="" class="widget-rating-item"></a></li>
+                           <li class="active"><a href="#" title="" class="widget-rating-item"></a></li>
+                           <li class="active"><a href="#" title="" class="widget-rating-item"></a></li>
+                           <li><a href="#" title="" class="widget-rating-item"></a></li>
+                           <li><a href="#" title="" class="widget-rating-item"></a></li>
+                       </ul>
+                   </span>
+                </td>
+
+                <td>
+                    <a class="btn btn-primary btn-sm"
+                       href="{{ path('directors_show', { 'id': director.id }) }}">
+                        <i class="glyphicon glyphicon-search"></i> Voir
+                    </a>
+                    <a class="btn btn-warning btn-sm" href="{{ path('directors_edit', { 'id': director.id }) }}">
+                        <i class="glyphicon glyphicon-pencil"></i> Editer</a>
+
+                </td>
+
+            </tr>
+           {% endfor %}
+           </tbody>
+
+       </table>
+
+
+</div>
+
+
+
+</div><!-- 1-END ROW ========================= -->
+
+{% endblock %}
